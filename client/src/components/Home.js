@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import Notes from "./Notes";
-// import NoteState from "./../context/notes/NoteState";
+// import { createContext } from "react";
+
 const Home = () => {
+  // const noteContext = createContext();
+  // const NoteProvider = noteContext.Provider;
   return (
-    <>
-      <div class="mb-3">
+    <div className="row my-3">
+      {/* <div class="mb-3">
         <h2>Add Notes</h2>
         <label for="exampleFormControlInput1" class="form-label">
           Email address
@@ -25,9 +28,11 @@ const Home = () => {
           id="exampleFormControlTextarea1"
           rows="3"
         ></textarea>
-        <Notes />
-      </div>
-    </>
+      </div> */}
+      {/* <NoteProvider value={{ notes, setNotes }}> */}
+      <Notes />
+      {/* </NoteProvider> */}
+    </div>
   );
 };
 

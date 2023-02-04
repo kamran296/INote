@@ -2,6 +2,8 @@ import NoteContext from "./noteContext";
 import { useState } from "react";
 
 const NoteState = (props) => {
+  // const NoteProvider = NoteContext.Provider;
+  // const NoteConsumer = NoteContext.Consumer;
   const notesInitial = [
     {
       _id: "63cfa6c26dd40a59d32efa9d",
@@ -24,7 +26,7 @@ const NoteState = (props) => {
   ];
   const [notes, setNotes] = useState(notesInitial);
   return (
-    <NoteContext.Provider value={{ notes, setNotes }}>
+    <NoteContext.Provider value={{ notesInitial }}>
       {props.children}
     </NoteContext.Provider>
   );
