@@ -2,7 +2,7 @@ const express = require("express");
 
 const userRouter = require("./Routes/users/userRoute");
 const loginRouter = require("./Routes/users/loginRoute");
-const notesRouter = require("./Routes/notes/notesRoute");
+const notesRouter = require("./Routes/Notes/notesRoute");
 const loginData = require("./Routes/users/loginData");
 
 const app = express();

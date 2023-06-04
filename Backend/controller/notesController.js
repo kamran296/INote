@@ -30,10 +30,14 @@ module.exports.createNote = async (req, res) => {
 };
 
 // Getting all the notes of the user
-module.exports.getAllNotes = async (req, res) => {
-  const notes = await Notes.find({ user: req.user.id });
-  res.status(200).json({ note: notes });
-};
+// module.exports.getAllNotes = async (req, res) => {
+//   try {
+//     const notes = await Notes.find({ user: req.user.id });
+//     res.status(200).json({ note: notes });
+//   } catch (err) {
+//     console.log("errore", err);
+//   }
+// };
 
 // Updating notes of the user
 
@@ -53,12 +57,12 @@ module.exports.updateNote = async (req, res) => {
   try {
     let note = await Notes.findById(req.params.id);
     if (!note) {
-      return res.status(400).send("error in updating");
+      return res.status(400).json("error in updating");
     }
     let value = note.user;
     console.log("user value is:", value);
     if (value.toString() !== req.user.id) {
-      return res.status(400).send("error in updating");
+      return res.status(400).json("error in updating");
     }
 
     note = await Notes.findByIdAndUpdate(
@@ -89,7 +93,7 @@ module.exports.deleteNote = async (req, res) => {
     }
 
     note = await Notes.findByIdAndDelete(req.params.id);
-    res.status(200).send("deleted successfully");
+    res.status(200).json("deleted successfully");
   } catch (error) {
     res.status(400).send("error in deleting");
   }

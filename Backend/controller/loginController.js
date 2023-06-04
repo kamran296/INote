@@ -21,6 +21,7 @@ module.exports.loginUser = async (req, res) => {
 
     const passwordCompare = await bcrypt.compare(password, pass);
     if (!passwordCompare) {
+      success = false;
       return res.status(400).json({ error: "invalid login credential" });
     }
 
@@ -30,8 +31,9 @@ module.exports.loginUser = async (req, res) => {
       },
     };
     const authToken = jwt.sign(data, JWT_SECRET);
-
+    success = true;
     res.status(200).json({
+      success,
       authToken,
     });
   } catch (err) {
